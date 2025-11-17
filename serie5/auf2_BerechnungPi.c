@@ -24,13 +24,17 @@ int main()
   // vorheriger Wert von pi
   double piOld; 
   // von Benutzer vorgegebene Genauigkeit
-  double accuracy; 
+  double accuracy = -1; 
   double diffMPIpiNew;
 
-  printf("Geben Sie bitte die Genauigkeit an, mit der pi nach der Leipniz-Reihe");
-  printf("berechnet werden soll: \n");
+  
+  while (accuracy <= 0)
+  {
+  printf("Geben Sie bitte einen positiven Wert für die Genauigkeit an, mit der ");
+  printf("pi nach der Leipniz-Reihe berechnet werden soll: \n");
   // Einlesen der Genauigkeit in Dezimal oder Exponentialdarstellung
   scanf("%lg", &accuracy);
+  }
 
   do
   {
