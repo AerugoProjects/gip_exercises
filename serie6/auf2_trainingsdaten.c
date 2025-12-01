@@ -20,12 +20,12 @@ int main(void)
   double max = 0;           // größter Wert
   double max2 = 0;          // zweit größter Wert
   int counter_sprung = 0;   // Anzahl der Sprünge
-  double weite;             // Weite des aktuellen Sprungs
+  double weite = 0;         // Weite des aktuellen Sprungs
   double gesamtweite = 0;   // Summe der gesprungenen Strecke
   double durchschnitt;      // durchschnittliche Sprungweite
   double maxDifferenz;      // Differenz zwischen min und max
 
-  while (weite > 0)
+ do
   {
     // Sprungweite einlesen
     printf("Sprungweite: ");
@@ -67,7 +67,7 @@ int main(void)
     printf("min: %lf\n", min);
     printf("max: %lf\n", max);
     printf("max2: %lf\n", max2);
-  }
+  } while (weite > 0);
 
   durchschnitt = gesamtweite / counter_sprung;
   maxDifferenz = max - min;
