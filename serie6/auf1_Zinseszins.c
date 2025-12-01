@@ -43,7 +43,7 @@ int main(void)
   {
     double zins = 1 + zinssatz/100;
     neuesKapital = startkapital * pow(zins, i);
-    printf("Kaptial nach %d Jahren: %lf\n", i, neuesKapital);
+    printf("Kaptial nach %d Jahren: %.2lf\n", i, neuesKapital);
   }
 
   return 0;
