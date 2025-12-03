@@ -23,7 +23,7 @@ double taylorSinus(int (*fact)(int), int stop, double x)
   
   double taylorSin;
   
-  for (taylorSin = 0; n <= stop; n*=2, sign=sign*-1)
+  for (taylorSin = 0; n <= stop; n+=2, sign=sign*-1)
     taylorSin = taylorSin + sign * (x,n)/fact(n);
   
   return taylorSin;
@@ -41,7 +41,7 @@ int main(void)
     // sin aus der Taylor-Reihe
   double step = 0.5;
 
-  printf("Geben Sie die maximale Potenz der Tayler-Reihe an:");
+  printf("Geben Sie die maximale Potenz der Tayler-Reihe an: ");
   scanf("%d\n", &maxPot);
 
   while (x >= 0 && x <= 10)
