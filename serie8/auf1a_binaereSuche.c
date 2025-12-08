@@ -37,6 +37,7 @@ int binarySearch (int numberInQuestion, int array[], int dim, int min, int max)
     // index in der Mitte des Arrays -> Stelle an der die Zahl verglichen wird
   if ( (max - min == 1 || max - min == 0) && numberInQuestion != array[index])
     return -1;
+    // wenn die Zahl nicht gefunden wurde, gib -1 zurück
   if (numberInQuestion == array[index])
     return index;
     // wenn die gesuchte Zahl an der Stelle index steht, gib den Index zurück
