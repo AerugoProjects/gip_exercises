@@ -69,8 +69,11 @@ int main(void)
   int numberReindeer = 0;
     // Anzahl an Rentierten
   
-  printf("Geben Sie die Anzahl antretender Rentiere an: ");
-  scanf("%d", &numberReindeer);
+  do
+  {
+    printf("Geben Sie die Anzahl antretender Rentiere an (min. 4): ");
+    scanf("%d", &numberReindeer);
+  } while (numberReindeer <=3);
     // Einlesen der Anzahl an Rentieren
 
   int arrayReindeer[numberReindeer];
