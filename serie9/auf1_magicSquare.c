@@ -38,7 +38,7 @@ int main()
   int n = 0;
     // Größe des magischen Quadrates
   do{
-    printf("Geben sie eine ungerade Anzahl an Feldern für ");
+    printf("Geben Sie eine ungerade Anzahl an Feldern für ");
     printf("das magische Quadrat an: ");
     scanf("%d", &n);
   } while (n%2 != 1);
