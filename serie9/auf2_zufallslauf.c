@@ -36,12 +36,12 @@ int main()
     // Zufallszahlgenerator initialisieren
 
 
-  int n = 0;
+  int n = 3;
     // Größe des Quadrates
-  do{
+  /*do{
     printf("Geben Sie die Seitenlaenge des Quadrats an: ");
     scanf("%d", &n);
-  } while (n < 2);
+  } while (n < 2);*/
     // Abfragen der Größe des magischen Quadrates
 
     
@@ -144,3 +144,20 @@ int main()
   
   return 0;
 }
+
+/*
+Schritten abhängig von der Kantenlaenge n
+
+n = 3
+ 8  8  7  7  7      8  8  8  8  7
+
+n = 4
+15 14 15 13 11     15 13 14 15 14
+
+n = 5
+21 24 19 22 21     10 19  9 23 21
+
+n = 10
+53 53 13 60 30     43 53 70 68 57
+
+*/
