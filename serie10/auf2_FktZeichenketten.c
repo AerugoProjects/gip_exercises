@@ -29,20 +29,55 @@ dabei nicht verwendet werden!
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 /* Augabenteil a
 Länge einer Zeichenkette bestimmen */
 int stringLen (char *string)
 {
-  int counterStingLen;
+  int counterStingLen = 0;
   // counter für die Zeichenanzahl
 
   int temp = 0;
-  while (*(string+temp) != '\0')
+    // temp als Laufvariable
+  while ( *(string+temp) != '\0' )
   {
     temp++;
+      // Ein Zeichen weiter rücken
     counterStingLen++;
+      // Zeichenanzahl um eins erhöhen
   }
 
   return counterStingLen;
+}
+
+int stringCount (char *string, char symbol)
+{
+  int counterSymbol = 0;
+    // counter für die Anzahl des gesuchten Symbols
+  
+  int temp = 0;
+    // temp als Laufvariable
+  while ( *(string+temp) != '\0' )
+  {
+    if ( *(string+temp) ==  symbol)
+      counterSymbol++;
+        // Anzahl der gefundenen Symbole um eins erhöhen
+    
+    temp++;
+      // zum nächsten Zeichen weiter rücken
+  }
+}
+
+
+int main(void)
+{
+  char string1[6] = {"test1"};
+  char string2[6] = {"test2"};
+  char *str1Pointer = string1;
+
+  int str1Length = stringLen(*str1Pointer);
+  printf("%d", str1Length);
+
+  return 0;
 }
