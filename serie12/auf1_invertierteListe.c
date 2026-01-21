@@ -55,7 +55,7 @@ struct element *head;
 void insertFirst (struct element **lst, int val)
 {
   struct element *neuesElement;
-    // erstellt ein neues Element mit Zeiter
+    // erstellt ein neues Element mit value und Zeiger
   
     neuesElement = malloc(sizeof(*neuesElement));
       // stellt Speicher für neues Element zur Verfügung
