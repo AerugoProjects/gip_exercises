@@ -17,7 +17,7 @@ int funcCountDigit (int number, int digit)
   if (number == digit)
     // Zahl ist gleich der gesuchten Ziffer
     return 1;
-  if (number/10 > 0)
+  if (number/10 > 0 && number < digit)
   {
     if (number % 10 == digit)
       return ( 1 + funcCountDigit(number/10,digit) );
