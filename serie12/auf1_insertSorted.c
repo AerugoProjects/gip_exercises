@@ -36,71 +36,53 @@ List *createList()
 }
 
 
-int size(List *list);
-void addLast (List *list, int value);
+void insertSorted (List *list, int val);
 void addSecond (List *list, int value);
-void printList(List *list);
-void invertList(List *list, List *newList);
+void printList(List *list);;
 void addFirstEntry (List *list, int value);
 
 
 
-
-//////////
-
+/////   -----   /////
 
 int main (void)
 {
   // create a list
   List *listA = createList();
-
-  // get size of listA
-  printf("Size of the list: %d \n", listA->size);
-
-  // Add entrys to listA
-  addFirstEntry(listA, 1);
-  addSecond(listA, 3);
-  addSecond(listA, 5);
-  addSecond(listA, 7);
+  addFirstEntry(listA,1);
   addSecond(listA, 9);
+  addSecond(listA, 7);
+  addSecond(listA, 5);
+  addSecond(listA, 3);
+  addSecond(listA, 2);
+
+  printf("Liste A: ");
+  printList(listA);
+
+  printf("\nEinzufügendes Element: 4");
+  printf("\n neue Liste A: ");
+  insertSorted(listA, 4);
 
   printList(listA);
-  printf("\nSize of the list: %d \n", listA->size);
 
-
-  // create a second list: listInv
-  List *listInv = createList();
-  invertList(listA,listInv);
-  printList(listInv);
-  
 
   return 0;
 }
 
-
-//////////
-
+/////   -----   /////
 
 
 
-/* function to get the size of the list */
-int size(List *list)
+void insertSorted (List *list, int val)
 {
-  return list->size;
-}
-
-
-/* Add entry at the end of the list */
-void addLast (List *list, int value)
-{
+  Node *currentNode = list->head;
+  while (currentNode->next->value < val)
+    currentNode = currentNode->next;
+  
   Node *newNode = malloc(sizeof(Node));
-    // reserve memeory for the new node
-  newNode->value = value;
-  newNode->next = NULL;
-  list->tail = newNode;
-    /* newt-pointer of the tail of the list shows now to
-    newNode instead of NULL */
-  list->size++;
+  newNode->value = val;
+  newNode->next = currentNode->next;
+  currentNode->next = newNode;
 }
 
 
@@ -118,7 +100,6 @@ void addSecond (List *list, int value)
 }
 
 
-/* go through the list*/
 void printList (List *list)
 {
   Node *currentNode = list->head;
@@ -126,20 +107,6 @@ void printList (List *list)
   while (currentNode != NULL)
   {
     printf("%d ", currentNode->value);
-    currentNode = currentNode->next;
-  }
-}
-
-
-void invertList(List *list, List *newList)
-{
-  addFirstEntry(newList, list->head->value);
-  Node *currentNode = list->head->next;
-    // set the current Node at the first Node of list
-  
-  while (currentNode != 0)
-  {
-    addSecond(newList, currentNode->value);
     currentNode = currentNode->next;
   }
 }
