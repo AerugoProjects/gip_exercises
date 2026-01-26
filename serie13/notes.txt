@@ -1,0 +1,41 @@
+Programmablauf:
+
+1. Spielkonfiguration von Konsole einlesen
+
+2. Prüfen, ob Startkonfiguration erlaubt ist 
+  (
+    Hexenhaus und Kaugummibäume auf benachbarten Feldern?
+    Hexenhaus oder Lolli-Baum nicht auf Feld 13 (sonst unlösbar)
+  )
+
+3. Ausgabe der Startkonfiguration als 2d-Gitter (printBoard)
+
+4. Speichern der Startkonfiguration in Knoten
+
+5. Bewegen der Spielsteine nach folgender Hierachie:
+  (vorher immer testen, ob das Zielfeld frei ist (emptyPlace))
+  a-d. Haensel (rechts, runter, links, hoch)
+  e-h. Gretel (rechts, runter, links, hoch)
+  i-l. Kaugummibaum 1 (rechts, runter, links, hoch)
+  m-p. Kaugummibaum 2 (rechts, runter, links, hoch)
+  q.   prüfen, ob Lolli-Baum auf mobilem Feld steht,
+        dann n-q sonst nicht bewegen
+  r-u. Lolli-Baum (rechts, runter, links, hoch)
+
+6. Prüfen, ob im Kreis gelaufen (pointer nach oben gehen 
+  und aktuelle mit vorherigen Konfigurationen vergleichen, 
+  als Sackgasse markieren und mit parent weiter machen)
+
+7. entstehende Spielkonfiguration in eigenem Array in eigenem
+  Knoten speichern (mit Link zum Vorgaenger und Nachfolger (mehrere mögl.))
+
+8. Zielkonfiguration erreicht? (Haensel/Gretel auf Feld 13)
+  a. ja -> weiter mit 8
+  b. nein -> wiederhole ab 5
+
+9. Pfad rückwärts nach oben gehen und die Spielkonfiguration
+  in einer neuen Liste speichern (immer vorne dran schreiben
+  -> älteste Konfiguration vorne in der Liste)
+
+10. neue Liste von vorne nach hinten durchgehen und die Spiel-
+  konfigurationen jeweils auf der Konsole ausgeben
