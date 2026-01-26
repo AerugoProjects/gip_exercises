@@ -80,10 +80,20 @@ void printMap(char string[], int dim)
 
 
 
+/* 8a -- testen, ob Haensel den Ausgang erreicht hat */
+int testExitHaensel (char string[], int dim)
+{
+  if (string[13] == 'H')  return 1;
+  else return 0;
+}
 
 
-
-
+/* 8a -- testen, ob Gretel den Ausgang erreicht hat */
+int testExitGretel (char string[], int dim)
+{
+  if (string[13] == 'G')  return 1;
+  else return 0;
+}
 
 
 
@@ -152,9 +162,11 @@ printMap(input, 17);
 /* TODO: 7. entstehende Spielkonfiguration in eigenem Array in eigenem
   Knoten speichern (mit Link zum Vorgaenger und Nachfolger (mehrere mögl.)) */
 
-/* TODO: 8. Zielkonfiguration erreicht? (Haensel/Gretel auf Feld 13)
+/* 8. Zielkonfiguration erreicht? (Haensel/Gretel auf Feld 13)
   a. ja -> weiter mit 8
   b. nein -> wiederhole ab 5 */
+  testExitHaensel(input, 17);
+  testExitGretel(input, 17);
 
 /* TODO: 9. Pfad rückwärts nach oben gehen und die Spielkonfiguration
   in einer neuen Liste speichern (immer vorne dran schreiben

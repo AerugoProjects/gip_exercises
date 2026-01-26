@@ -29,7 +29,7 @@ TODO: 6. Prüfen, ob im Kreis gelaufen (pointer nach oben gehen
 TODO: 7. entstehende Spielkonfiguration in eigenem Array in eigenem
   Knoten speichern (mit Link zum Vorgaenger und Nachfolger (mehrere mögl.))
 
-TODO: 8. Zielkonfiguration erreicht? (Haensel/Gretel auf Feld 13)
+8. Zielkonfiguration erreicht? (Haensel/Gretel auf Feld 13)
   a. ja -> weiter mit 8
   b. nein -> wiederhole ab 5
 
