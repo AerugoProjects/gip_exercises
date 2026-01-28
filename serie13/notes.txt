@@ -26,16 +26,46 @@ TODO: 6. Prüfen, ob im Kreis gelaufen (pointer nach oben gehen
   und aktuelle mit vorherigen Konfigurationen vergleichen, 
   als Sackgasse markieren und mit parent weiter machen)
 
-TODO: 7. entstehende Spielkonfiguration in eigenem Array in eigenem
-  Knoten speichern (mit Link zum Vorgaenger und Nachfolger (mehrere mögl.))
+TODO: 7. entstehende Spielkonfiguration in eigenem Array in 
+  eigenem Knoten speichern (mit Link zum Vorgaenger und Nach-
+  folger (mehrere mögl.))
 
 8. Zielkonfiguration erreicht? (Haensel/Gretel auf Feld 13)
   a. ja -> weiter mit 8
   b. nein -> wiederhole ab 5
 
-TODO: 9. Pfad rückwärts nach oben gehen und die Spielkonfiguration
-  in einer neuen Liste speichern (immer vorne dran schreiben
+TODO: 9. Pfad rückwärts nach oben gehen und die Spielkonfi-
+  guration in einer neuen Liste speichern (immer vorne dran 
+  schreiben
   -> älteste Konfiguration vorne in der Liste)
 
-TODO: 10. neue Liste von vorne nach hinten durchgehen und die Spiel-
-  konfigurationen jeweils auf der Konsole ausgeben
+TODO: 10. neue Liste von vorne nach hinten durchgehen und die
+  Spielkonfigurationen jeweils auf der Konsole ausgeben
+
+
+
+Listen: 
+1. Liste: moves
+  - 2 pointer: movesHEAD->NULL und movesROOT->NULL
+  - movesHEAD zeigt auf das vorderste Listenelement
+       = aktueller Knoten des Baumes
+  - movesROOT zeigt auf die Startkonfiguration
+  - jeder Knoten zeigt auf seinen Vorgänger und wird vorne
+    an die Liste angehängt
+
+2. Liste: deadEnds
+  - 2 Pointer: deadEndsHEAD->NULL und deadEndsTAIL->NULL
+  - beinhaltet die Sackgassen (immer hinten angehängt)
+
+- vergleiche movesHEAD mit allen bisherigen Einträgen (temp
+  notwendig) um zu schauen, ob die bisherige Konfiguration
+  schon mal vorkam
+  JA:
+    add movesHEAD zu deadEnds
+  NEIN:
+    vergleiche movesHEAD mit deadEnds-Liste (alle Einträge):
+    taucht movesHEAD in deadEnds auf?
+    JA:
+      gehe zu movesHEAD->parent und mache einen anderen Zug
+    NEIN:
+      mache einen weiteren Zug ausgehen von movesHEAD

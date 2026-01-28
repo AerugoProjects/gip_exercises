@@ -7,18 +7,15 @@
 // 
 // // //
 
+/* Datentyp Node erstellen: Datentyp für die einzelnen Knoten
+mit einem Wert val und Zeigern zum vorherigen Element (parent)*/
 
+typedef struct Node
+{
+  int value;
 
-
-
-
-
-
-
-
-
-
-
+  struct Node *parent;
+}Node;
 
 
 // // //
@@ -80,6 +77,66 @@ void printMap(char string[], int dim)
 
 
 
+/* 5. Bewegen der Spielsteine */
+int emptyPlace (char string[], int dim, int index)
+{
+  if (string[index] == ' ') return 1;
+  else return 0;
+  /* wenn das Feld an der Stelle index leer ist, gibt true
+  zurück, sonst gibt false zurück */
+}
+
+/* TODO: für Haensel, Gretel und Lolli-Bäume veralgemeinern
+(alles was 1x1-Feld belegt -> switch )*/
+void moveHaenselUp (char string[], int dim)
+{
+  int haensel = -1;
+  // haensel-index außerhalb des arrays
+  for (int temp = 0; temp < dim; temp++)
+  {
+    if (string[temp] = 'H')
+    {
+      haensel = temp;
+      break;
+      /* wenn Haensel auf der Karte gefunden wurde, speicher
+      den Index von Haensel in haensel und verlasse den Loop */
+    }
+  }
+  
+  if (haensel-4 > 0 && emptyPlace(string, dim, haensel-4))
+  /* wenn das Feld über Haensel noch auf der Map liegt und
+  frei ist, bewege Haensel ein Feld nach oben*/
+  {
+    string[haensel-4] = 'H';
+    string[haensel] = ' ';
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 8a -- testen, ob Haensel den Ausgang erreicht hat */
 int testExitHaensel (char string[], int dim)
 {
@@ -88,16 +145,12 @@ int testExitHaensel (char string[], int dim)
 }
 
 
-/* 8a -- testen, ob Gretel den Ausgang erreicht hat */
+/* 8b -- testen, ob Gretel den Ausgang erreicht hat */
 int testExitGretel (char string[], int dim)
 {
   if (string[13] == 'G')  return 1;
   else return 0;
 }
-
-
-
-
 
 
 
