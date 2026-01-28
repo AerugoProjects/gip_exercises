@@ -86,8 +86,7 @@ int emptyPlace (char string[], int dim, int index)
   zurück, sonst gibt false zurück */
 }
 
-/* TODO: für Haensel, Gretel und Lolli-Bäume veralgemeinern
-(alles was 1x1-Feld belegt -> switch )*/
+/* 
 void moveHaenselUp (char string[], int dim)
 {
   int haensel = -1;
@@ -99,22 +98,74 @@ void moveHaenselUp (char string[], int dim)
       haensel = temp;
       break;
       /* wenn Haensel auf der Karte gefunden wurde, speicher
-      den Index von Haensel in haensel und verlasse den Loop */
+      den Index von Haensel in haensel und verlasse den Loop
     }
   }
   
   if (haensel-4 > 0 && emptyPlace(string, dim, haensel-4))
   /* wenn das Feld über Haensel noch auf der Map liegt und
-  frei ist, bewege Haensel ein Feld nach oben*/
+  frei ist, bewege Haensel ein Feld nach oben
   {
     string[haensel-4] = 'H';
     string[haensel] = ' ';
   }
 
+} */
+
+/* Funktion um ein 1x1 großes Element um ein Feld nach oben
+zu verschieben */
+void move11Up (char string[], int dim, char item)
+{
+  int index = -1;
+  // Index des Items auf -1 setzten (außerhalb des Arrays)
+  
+  for (int temp = 0; temp < dim; temp++)
+  {
+    if ( string[temp] = item )
+    {
+      index = temp;
+      break;
+      /* wenn das Item auf der Karte gefunden wurde, speicher
+      den Index in index und verlasse den Loop */
+    }
+  }
+
+  if ( index-4 > 0 && emptyPlace(string, dim, index-4) )
+  /* wenn das darüberliegende Feld noch auf der Karte liegt
+  und frei ist: bewege das Item dahin */
+  {
+    string[index-4] = item;
+    string[index] = ' ';
+  }
 }
 
 
+/* Funktion um ein 1x1 großes Element um ein Feld nach unten
+zu verschieben */
+void move11Down (char string[], int dim, char item)
+{
+  int index = -1;
+  // Index des Items auf -1 setzten (außerhalb des Arrays)
+  
+  for (int temp = 0; temp < dim; temp++)
+  {
+    if ( string[temp] = item )
+    {
+      index = temp;
+      break;
+      /* wenn das Item auf der Karte gefunden wurde, speicher
+      den Index in index und verlasse den Loop */
+    }
+  }
 
+  if ( index+4 < dim && emptyPlace(string, dim, index+4) )
+  /* wenn das darüberliegende Feld noch auf der Karte liegt
+  und frei ist: bewege das Item dahin */
+  {
+    string[index+4] = item;
+    string[index] = ' ';
+  }
+}
 
 
 
