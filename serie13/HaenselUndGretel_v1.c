@@ -34,6 +34,8 @@ void testHexe (char string[], int dim)
       // Ausgabe, dass die Hexe den Ausgang blockiert
     exit(0);
       // Programm an dieser Stelle ordnungsgemäß beenden
+  
+  /* TODO: Hexenhaus auf beachbarten Feldern?*/
       
 /* exit(0): Programm wurde erfolgreich ausgeführt und an dieser Stelle
 bewusst beendet. Es gab keinen Fehler -> exit(0) */
@@ -53,6 +55,24 @@ void testLolli (char string[], int dim)
       // Programm an dieser Stelle ordnungsgemäß beenden
   }
 }
+
+/* TODO: 2c -- testen ob die Kaugummi-Baume zusammenhängen */
+/*void testBubbles (char string[], int dim)
+{
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if 
+    ( // Kaugummi-Baum 1 horizontal
+      string[temp] == '1' && string[temp+1] == '1' && temp%4 < 3 ||
+      string[temp] == '2' && string[temp+1] == '2' && temp%4 < 3 ||
+      temp < 12 && string[temp] == '1' && string[temp+4] == '1' ||
+      temp < 12 && string[temp] == '2' && string[temp+4] == '2'
+    )
+      printf("Korrekte Eingabe der Kaugummi-Bäume.");
+    else
+      exit(0);
+  }
+}*/
 
 
 
@@ -78,6 +98,8 @@ void printMap(char string[], int dim)
 
 
 /* 5. Bewegen der Spielsteine */
+
+/* Testen, ob das Zielfeld leer ist */
 int emptyPlace (char string[], int dim, int index)
 {
   if (string[index] == ' ') return 1;
@@ -168,20 +190,255 @@ void move11Down (char string[], int dim, char item)
 }
 
 
+/* Funktion um ein 1x1 großes Element um ein Feld nach links
+zu verschieben */
+void move11Left (char string[], int dim, char item)
+{
+  int index = -1;
+  // Index des Items auf -1 setzten (außerhalb des Arrays)
+  
+  for (int temp = 0; temp < dim; temp++)
+  {
+    if ( string[temp] = item )
+    {
+      index = temp;
+      break;
+      /* wenn das Item auf der Karte gefunden wurde, speicher
+      den Index in index und verlasse den Loop */
+    }
+  }
+
+  if
+  (
+    index%4 != 0 && // keine 0, 4, 8, 12  
+    emptyPlace(string, dim, index-1) 
+  )
+  /* wenn das zugehörige linke Feld existiert und frei ist:
+  bewege das Item dahin */
+  {
+    string[index-1] = item;
+    string[index] = ' ';
+  }
+}
 
 
 
+/* Funktion um ein 1x1 großes Element um ein Feld nach rechts
+zu verschieben */
+void move11Right (char string[], int dim, char item)
+{
+  int index = -1;
+  // Index des Items auf -1 setzten (außerhalb des Arrays)
+  
+  for (int temp = 0; temp < dim; temp++)
+  {
+    if ( string[temp] = item )
+    {
+      index = temp;
+      break;
+      /* wenn das Item auf der Karte gefunden wurde, speicher
+      den Index in index und verlasse den Loop */
+    }
+  }
+
+  if
+  (
+    index%4 != 3 && // keine 3, 7, 11, 15  
+    emptyPlace(string, dim, index+1) 
+  )
+  /* wenn das zugehörige rechte Feld existiert und frei ist:
+  bewege das Item dahin */
+  {
+    string[index+1] = item;
+    string[index] = ' ';
+  }
+}
 
 
 
+/* Funktion um 1x2 nach oben zu verschieben */
+void move12Up (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+1] == item && temp%4 < 3)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( index-4 > 0 && emptyPlace(string,dim,index-4) && emptyPlace(string,dim,index-3) )
+  {
+    string[index-4] = item;
+    string[index-3] = item;
+    string[index] = ' ';
+    string[index+1] = ' ';
+  }
+}
+
+
+/* Funktion um 1x2 nach unten zu verschieben */
+void move12Down (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+1] == item && temp%4 < 3)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( index+4 < dim-1 && emptyPlace(string,dim,index+4) && emptyPlace(string,dim,index+5) )
+  {
+    string[index+4] = item;
+    string[index+5] = item;
+    string[index] = ' ';
+    string[index+1] = ' ';
+  }
+}
+
+
+/* Funktion um 1x2 nach links zu verschieben */
+void move12Left (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+1] == item && temp%4 < 3)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( emptyPlace(string,dim,index-1) )
+  {
+    string[index-1] = item;
+    string[index+1] = ' ';
+  }
+}
+
+
+/* Funktion um 1x2 nach rechts zu verschieben */
+void move12Right (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+1] == item && temp%4 < 3)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( emptyPlace(string,dim,index+2) )
+  {
+    string[index+2] = item;
+    string[index] = ' ';
+  }
+}
 
 
 
+/* Funktion um 1x2 nach oben zu verschieben */
+void move12Up (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+4] == item)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( index-4 > 0 && emptyPlace(string,dim,index-4) )
+  {
+    string[index-4] = item;
+    string[index] = ' ';
+  }
+}
 
 
+/* Funktion um 2x1 nach unten zu verschieben */
+void move21Down (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+4] == item)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( index+4 < dim-1 && emptyPlace(string,dim,index+8) )
+  {
+    string[index+8] = item;
+    string[index] = ' ';
+  }
+}
 
 
+/* Funktion um 2x1 nach links zu verschieben */
+void move21Left (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-1; temp++)
+  {
+    if (string[temp] == item && string[temp+4] == item)
+    {
+      index = temp;
+      break;
+    }
+  }
 
+  if ( emptyPlace(string,dim,index-1)  && emptyPlace(string,dim,index+3))
+  {
+    string[index-1] = item;
+    string[index+3] = item;
+    string[index] = ' ';
+    string[index+4] = ' ';
+  }
+}
+
+
+/* Funktion um 2x1 nach rechts zu verschieben */
+void move21Right (char string[], int dim, char item)
+{
+  int index = -1;
+  // index der Bubbles
+  for (int temp = 0; temp < dim-4; temp++)
+  {
+    if (string[temp] == item && string[temp+4] == item)
+    {
+      index = temp;
+      break;
+    }
+  }
+
+  if ( emptyPlace(string,dim,index+1) && emptyPlace(string,dim,index+5) )
+  {
+    string[index+1] = item;
+    string[index+5] = item;
+    string[index] = ' ';
+    string[index+4] = ' ';
+  }
+}
 
 
 
@@ -240,6 +497,7 @@ int main (void)
 
 testHexe(input, 17);
 testLolli(input, 17);
+//testBubbles(input, 17);
 
 
 /* 3. Ausgabe der Startkonfiguration als 2d-Gitter (printBoard) */

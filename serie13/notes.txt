@@ -12,13 +12,13 @@ Programmablauf:
 
 TODO: 4. Speichern der Startkonfiguration in Knoten
 
-TODO: 5. Bewegen der Spielsteine nach folgender Hierachie:
+5. Bewegen der Spielsteine nach folgender Hierachie:
   (vorher immer testen, ob das Zielfeld frei ist (emptyPlace))
   a-d. Haensel (rechts, runter, links, hoch)
   e-h. Gretel (rechts, runter, links, hoch)
-  i-l. Kaugummibaum 1 (rechts, runter, links, hoch)
-  m-p. Kaugummibaum 2 (rechts, runter, links, hoch)
-  q.   prüfen, ob Lolli-Baum auf mobilem Feld steht,
+  i-l. Kaugummibaum 1x2 (rechts, runter, links, hoch)
+TODO:   m-p. Kaugummibaum 2x1 (rechts, runter, links, hoch)
+TODO:   q.   prüfen, ob Lolli-Baum auf mobilem Feld steht,
         dann n-q sonst nicht bewegen
   r-u. Lolli-Baum (rechts, runter, links, hoch)
 
