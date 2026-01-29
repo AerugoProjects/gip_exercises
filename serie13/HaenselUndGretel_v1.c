@@ -13,7 +13,6 @@ mit einem Wert val und Zeigern zum vorherigen Element (parent)*/
 typedef struct Node
 {
   int value;
-
   struct Node *parent;
 }Node;
 
@@ -349,8 +348,8 @@ void move12Right (char string[], int dim, char item)
 
 
 
-/* Funktion um 1x2 nach oben zu verschieben */
-void move12Up (char string[], int dim, char item)
+/* Funktion um 2x1 nach oben zu verschieben */
+void move21Up (char string[], int dim, char item)
 {
   int index = -1;
   // index der Bubbles

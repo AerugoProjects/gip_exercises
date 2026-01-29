@@ -17,7 +17,7 @@ TODO: 4. Speichern der Startkonfiguration in Knoten
   a-d. Haensel (rechts, runter, links, hoch)
   e-h. Gretel (rechts, runter, links, hoch)
   i-l. Kaugummibaum 1x2 (rechts, runter, links, hoch)
-TODO:   m-p. Kaugummibaum 2x1 (rechts, runter, links, hoch)
+  m-p. Kaugummibaum 2x1 (rechts, runter, links, hoch)
 TODO:   q.   prüfen, ob Lolli-Baum auf mobilem Feld steht,
         dann n-q sonst nicht bewegen
   r-u. Lolli-Baum (rechts, runter, links, hoch)
@@ -69,3 +69,13 @@ Listen:
       gehe zu movesHEAD->parent und mache einen anderen Zug
     NEIN:
       mache einen weiteren Zug ausgehen von movesHEAD
+
+
+Schleife
+- baut neuen Knoten
+- führt Bewegung aus
+- testet auf Schleife
+- testet auf Sackgasse
+- testet auf Ende JA: Liste hoch gehen und printen
+- speichern in dem neuem Knoten
+- beginnt von vorne
